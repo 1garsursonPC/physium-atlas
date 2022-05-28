@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c08afb02-6b1e-487b-b481-8f4766f984ee": {
+      "ProjectGuid": "c08afb02-6b1e-487b-b481-8f4766f984ee",
+      "DisplayName": "PhysiumAtlas",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
