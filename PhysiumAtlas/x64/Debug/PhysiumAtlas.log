@@ -1,2 +1,114 @@
 ﻿  main.cpp
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(33,67): warning C4244: 'argument' : conversion de 'unsigned int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(33,51): warning C4244: 'argument' : conversion de 'unsigned int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(34,73): warning C4244: 'argument' : conversion de 'unsigned int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(34,57): warning C4244: 'argument' : conversion de 'unsigned int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(35,79): warning C4244: 'argument' : conversion de 'unsigned int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(35,57): warning C4244: 'argument' : conversion de 'unsigned int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(36,73): warning C4244: 'argument' : conversion de 'unsigned int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(36,51): warning C4244: 'argument' : conversion de 'unsigned int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(39,70): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(39,53): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(40,76): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(40,59): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(41,82): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(41,59): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(42,76): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\TileMap.h(42,53): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
   PhysiumAtlas.vcxproj -> C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\x64\Debug\PhysiumAtlas.exe
