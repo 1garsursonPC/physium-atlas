@@ -7,8 +7,10 @@ class StaticItem
 {
 public:
 	StaticItem() = delete;
-	StaticItem(unsigned short textureID, Coordinates upperLeft, Coordinates bottomLeft);
-	StaticItem(unsigned short textureID, Hitbox hitbox);
+	StaticItem(unsigned short textureID, Coordinates position, Coordinates size)
+		: textureID(textureID), hitbox(position, size) {}
+	StaticItem(unsigned short textureID, Hitbox hitbox)
+		: textureID(textureID), hitbox(hitbox)
 
 	Hitbox& getHitbox() { return hitbox; }
 
