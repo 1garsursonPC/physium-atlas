@@ -7,16 +7,17 @@ class Hitbox
 {
 public:
 	Hitbox() = delete;
-	Hitbox(Coordinates position, Coordinates size);
+	Hitbox(Coordinates position, Coordinates size)
+		: position(position), size(size) {}
 
-	bool isColliding(Hitbox hitbox);
+	bool isColliding(const Hitbox hitbox);
 
-	Coordinates& getPosition();
-	Coordinates& getSize();
+	Coordinates& getPosition() { return this->position; }
+	Coordinates& getSize() { return this->size; }
 
 private:
 	Coordinates position;
 	Coordinates size;
-}
+};
 
 #endif

@@ -5,17 +5,18 @@ class Coordinates
 {
 public:
 	Coordinates() = delete;
-	Coordinates(float x, float y);
+	Coordinates(float x, float y)
+		: x(x), y(y) {}
 
-	float getX();
-	float getY();
+	float getX() { return this->x; }
+	float getY() { return this->y; }
 
-	void setCoordinates(float x, float y);
-	void setX(float x);
-	void setY(float y);
+	void setCoordinates(float x, float y) { this->x = x; this->y = y; }
+	void setX(float x) { this->x = x; }
+	void setY(float y) { this->y = y; }
 public:
 	float x;
 	float y;
-}
+};
 
 #endif
