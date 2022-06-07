@@ -19,7 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Coordinates.cpp" />
+    <ClCompile Include="Hitbox.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="StaticItem.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Coordinates.h" />
+    <ClInclude Include="Hitbox.h" />
+    <ClInclude Include="StaticItem.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
