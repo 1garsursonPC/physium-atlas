@@ -1,29 +1,9 @@
 #include <SFML/Graphics.hpp>
 #include "TileMap.h"
+#include "DrawableSprite.h"
 
 int main()
 {
-    /*
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
-
-    return 0;
-    */
     //Création de la fenêtre
     sf::RenderWindow window(sf::VideoMode(1024, 576), "Tilemap");
 
@@ -38,7 +18,7 @@ int main()
         6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4,
         6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4,
         6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4,
-        6, 5, 5, 5, 3, 7, 7, 7, 7,11, 5, 5, 5, 5, 5, 5, 5, 3, 7, 11, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4,
+        6, 5, 5, 5, 3, 7, 7, 7, 7,11, 5, 5, 5, 5, 5, 5, 5, 3, 7,11, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4,
         6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4,
         6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 7,11, 5, 5, 5, 5, 5, 5, 4,
         6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4,
@@ -55,10 +35,16 @@ int main()
     if (!map.load("../Sprites/Tilemap.png", sf::Vector2u(32, 32), level, 32, 18))
         return -1;
 
-    // on fait tourner la boucle principale
+    //Ajout du Sprite du joueur
+    DrawableSprite playerSprite;
+    if (!playerSprite.load("../Sprites/Player.png"))
+        return -1;
+    playerSprite.new_pos(64, 500);
+
+    //On fait tourner la boucle principale
     while (window.isOpen())
     {
-        // on gère les évènements
+        //On gère les évènements
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -66,9 +52,10 @@ int main()
                 window.close();
         }
 
-        // on dessine le niveau
+        //On dessine le niveau
         window.clear();
         window.draw(map);
+        window.draw(playerSprite);
         window.display();
     }
 
