@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DrawableSprite.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DrawableSprite.h" />
     <ClInclude Include="TileMap.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
