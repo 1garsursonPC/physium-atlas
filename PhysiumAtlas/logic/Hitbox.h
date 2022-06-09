@@ -14,6 +14,8 @@ public:
 
 	Coordinates& getPosition() { return this->position; }
 	Coordinates& getSize() { return this->size; }
+	void setPosition(Coordinates _nwpos) { position = _nwpos; }
+	void setSize(Coordinates _nwsize) { size = _nwsize; }
 
 private:
 	Coordinates position;
