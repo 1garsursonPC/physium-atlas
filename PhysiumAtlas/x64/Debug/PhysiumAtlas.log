@@ -1,12 +1,6 @@
-﻿  DrawableSprite.cpp
-C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\DrawableSprite.cpp(5,38): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\DrawableSprite.cpp(5,35): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
+﻿  Player.cpp
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\Player.cpp(17,60): warning C4305: 'argument' : troncation de 'double' à 'float'
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\Player.cpp(27,60): warning C4305: 'argument' : troncation de 'double' à 'float'
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\Player.cpp(38,42): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\Player.cpp(41,42): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
   PhysiumAtlas.vcxproj -> C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\x64\Debug\PhysiumAtlas.exe

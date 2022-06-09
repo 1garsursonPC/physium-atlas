@@ -1,10 +1,12 @@
 #include <SFML/Graphics.hpp>
 #include "TileMap.h"
 #include "DrawableSprite.h"
+#include "Player.h"
+#include <iostream>
 
 int main()
 {
-    //Création de la fenêtre
+    //Creation de la fenetre
     sf::RenderWindow window(sf::VideoMode(1024, 576), "Tilemap");
 
     //Dessin du niveau
@@ -30,10 +32,12 @@ int main()
        14, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,15,
     };
 
-    //Création de la Tilemap
+    //Creation de la Tilemap
     TileMap map;
     if (!map.load("../Sprites/Tilemap.png", sf::Vector2u(32, 32), level, 32, 18))
         return -1;
+
+    Player player = Player(0, Coordinates(64, 500), Coordinates(22, 44), 85);
 
     //Ajout du Sprite du joueur
     DrawableSprite playerSprite;
@@ -44,13 +48,34 @@ int main()
     //On fait tourner la boucle principale
     while (window.isOpen())
     {
-        //On gère les évènements
+        sf::Clock clock; // Starts the clock
+
         sf::Event event;
         while (window.pollEvent(event))
         {
+            sf::Time elapsedTime = clock.getElapsedTime();
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            {
+                player.moveRight(elapsedTime.asSeconds() * 1000);
+            }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            {
+                player.moveLeft(elapsedTime.asSeconds() * 1000);
+            }
+
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            clock.restart(); // Restart the clock to know when was the last input
         }
+        playerSprite.new_pos(player.getHitbox().getPosition().getX(), player.getHitbox().getPosition().getY());
+        player.idle();
+
+        std::cout << "Position : " << player.getHitbox().getPosition().getX() << std::endl;
+        std::cout << "Vitesse : " << player.getSpeed().getX() << std::endl;
+        std::cout << "Accélération : " << player.getAcceleration().getX() << std::endl;
+        std::cout << std::endl;
+
 
         //On dessine le niveau
         window.clear();
