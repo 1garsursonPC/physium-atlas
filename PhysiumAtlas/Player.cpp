@@ -29,7 +29,6 @@ void Player::moveLeft(float elapsedtime)
 		setSpeed(Coordinates(getSpeed().getX() + getAcceleration().getX() * 1, getSpeed().getY()));
 	}
 	getHitbox().setPosition(Coordinates((getHitbox().getPosition().getX()) + (getSpeed().getX() * elapsedtime), getHitbox().getPosition().getY()));
-
 }
 
 void Player::idle()
