@@ -4,7 +4,8 @@
 class Coordinates
 {
 public:
-	Coordinates() = delete;
+	Coordinates() 
+	:x(0), y(0) {};
 	Coordinates(float x, float y)
 		: x(x), y(y) {}
 

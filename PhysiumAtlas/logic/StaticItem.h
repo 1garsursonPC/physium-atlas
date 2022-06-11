@@ -10,13 +10,13 @@ public:
 	StaticItem(unsigned short textureID, Coordinates position, Coordinates size)
 		: textureID(textureID), hitbox(position, size) {}
 	StaticItem(unsigned short textureID, Hitbox hitbox)
-		: textureID(textureID), hitbox(hitbox)
+		: textureID(textureID), hitbox(hitbox) {}
 
-	Hitbox& getHitbox() { return hitbox; }
+		Hitbox& getHitbox() { return hitbox; }
 
 private:
 	Hitbox hitbox;
 	unsigned short textureID;
-}
+};
 
 #endif
