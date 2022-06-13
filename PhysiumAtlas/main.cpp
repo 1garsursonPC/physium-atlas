@@ -3,6 +3,7 @@
 #include "DrawableSprite.h"
 #include "Player.h"
 #include <iostream>
+#include "PhysicEngine.h"
 
 int main()
 {
@@ -31,6 +32,8 @@ int main()
         6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 7, 7, 7, 7, 7,11, 4,
        14, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,15,
     };
+
+    PhysicEngine game;
 
     //Creation de la Tilemap
     TileMap map;
@@ -68,13 +71,15 @@ int main()
 
             clock.restart(); // Restart the clock to know when was the last input
         }
+        game.applyWeight(player);
+
         playerSprite.new_pos(player.getHitbox().getPosition().getX(), player.getHitbox().getPosition().getY());
         player.idle();
 
-        std::cout << "Position : " << player.getHitbox().getPosition().getX() << std::endl;
-        std::cout << "Vitesse : " << player.getSpeed().getX() << std::endl;
-        std::cout << "Accélération : " << player.getAcceleration().getX() << std::endl;
-        std::cout << std::endl;
+        //std::cout << "Position : " << player.getHitbox().getPosition().getX() << std::endl;
+        //std::cout << "Vitesse : " << player.getSpeed().getX() << std::endl;
+        //std::cout << "Accélération : " << player.getAcceleration().getX() << std::endl;
+        //std::cout << std::endl;
 
 
         //On dessine le niveau

@@ -44,6 +44,6 @@ void Player::idle()
 		setSpeed(Coordinates(0, 0));
 		setAcceleration(Coordinates(0, 0));
 	}
-	getHitbox().setPosition(Coordinates((getHitbox().getPosition().getX()) + (getSpeed().getX() * 1), getHitbox().getPosition().getY()));
+	getHitbox().setPosition(Coordinates((getHitbox().getPosition().getX()) + (getSpeed().getX() * 1), (getHitbox().getPosition().getY())));
 
 }
