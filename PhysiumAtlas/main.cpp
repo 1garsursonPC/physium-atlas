@@ -53,19 +53,27 @@ int main()
     {
         sf::Clock clock; // Starts the clock
 
+        sf::Time elapsedTime = clock.getElapsedTime();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            player.moveRight(elapsedTime.asSeconds() * 1000);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            player.moveLeft(elapsedTime.asSeconds() * 1000);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        {
+            player.jump(elapsedTime.asSeconds() * 1000);
+        }
+        else 
+        {
+            player.idle(elapsedTime.asSeconds() * 1000);
+        }
+
         sf::Event event;
         while (window.pollEvent(event))
         {
-            sf::Time elapsedTime = clock.getElapsedTime();
-            if (event.type == sf::Event::KeyPressed && sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            {
-                player.moveRight(elapsedTime.asSeconds() * 1000);
-            }
-            else if (event.type == sf::Event::KeyPressed && sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            {
-                player.moveLeft(elapsedTime.asSeconds() * 1000);
-            }
-
             if (event.type == sf::Event::Closed)
                 window.close();
 
@@ -74,7 +82,6 @@ int main()
         game.applyWeight(player);
 
         playerSprite.new_pos(player.getHitbox().getPosition().getX(), player.getHitbox().getPosition().getY());
-        //player.idle();
 
         //std::cout << "Position : " << player.getHitbox().getPosition().getX() << std::endl;
         //std::cout << "Vitesse : " << player.getSpeed().getX() << std::endl;

@@ -7,37 +7,40 @@ Player::Player(unsigned short _textureID, Coordinates _position, Coordinates _si
 {
 }
 
-void Player::jump()
+void Player::jump(float elapsedtime)
 {
+	setAcceleration(Coordinates(getAcceleration().getX(), -0.002));
+	if (getSpeed().getY() <= 1.5)
+		setSpeed(Coordinates(getSpeed().getX(), getSpeed().getY() + getAcceleration().getY()));
+	getHitbox().setPosition(Coordinates(getHitbox().getPosition().getX(), (getHitbox().getPosition().getY()) + getSpeed().getY()));
 
 }
 
 void Player::moveRight(float elapsedtime)
 {
 	setAcceleration( Coordinates(1.2,getAcceleration().getY() ) );
-	if (getSpeed().getX() <= 30) {
-		setSpeed( Coordinates(getSpeed().getX() + getAcceleration().getX() * 1, getSpeed().getY() ) );
+	if (getSpeed().getX() <= 0.3) {
+		setSpeed( Coordinates(getSpeed().getX() + getAcceleration().getX() * elapsedtime, getSpeed().getY() ) );
 	}
-	getHitbox().setPosition(Coordinates( (getHitbox().getPosition().getX()) + (getSpeed().getX() * elapsedtime) , getHitbox().getPosition().getY() ));
-
+	getHitbox().setPosition(Coordinates( (getHitbox().getPosition().getX()) + (getSpeed().getX() * 1) , getHitbox().getPosition().getY() ));
 }
 
 void Player::moveLeft(float elapsedtime)
 {
 	setAcceleration(Coordinates(-1.2, getAcceleration().getY()));
-	if (getSpeed().getX() >= -30) {
-		setSpeed(Coordinates(getSpeed().getX() + getAcceleration().getX() * 1, getSpeed().getY()));
+	if (getSpeed().getX() >= -0.3) {
+		setSpeed(Coordinates(getSpeed().getX() + getAcceleration().getX() * elapsedtime, getSpeed().getY()));
 	}
-	getHitbox().setPosition(Coordinates((getHitbox().getPosition().getX()) + (getSpeed().getX() * elapsedtime), getHitbox().getPosition().getY()));
+	getHitbox().setPosition(Coordinates((getHitbox().getPosition().getX()) + (getSpeed().getX() * 1), getHitbox().getPosition().getY()));
 }
 
-void Player::idle()
+void Player::idle(float elapsedtime)
 {
 	if (getSpeed().getX() > 0 && getAcceleration().getX() > 0) {
-		setSpeed(Coordinates(getSpeed().getX() - getAcceleration().getX() * 0.05, getSpeed().getY()));
+		setSpeed(Coordinates(getSpeed().getX() - getAcceleration().getX() * elapsedtime / 0.5, getSpeed().getY()));
 	}	
 	else if (getSpeed().getX() < 0 && getAcceleration().getX() < 0) {
-		setSpeed(Coordinates(getSpeed().getX() - getAcceleration().getX() * 0.05, getSpeed().getY()));
+		setSpeed(Coordinates(getSpeed().getX() - getAcceleration().getX() * elapsedtime / 0.5, getSpeed().getY()));
 	}
 	else
 	{

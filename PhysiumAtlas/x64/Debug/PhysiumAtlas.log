@@ -1,3 +1,7 @@
-﻿  PhysicEngine.cpp
-C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\PhysicEngine.h(7,10): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+﻿  Player.cpp
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\Player.cpp(12,62): warning C4305: 'argument' : troncation de 'double' à 'float'
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\Player.cpp(21,60): warning C4305: 'argument' : troncation de 'double' à 'float'
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\Player.cpp(30,60): warning C4305: 'argument' : troncation de 'double' à 'float'
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\Player.cpp(40,42): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\Player.cpp(43,42): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
   PhysiumAtlas.vcxproj -> C:\Users\polai\Desktop\PhysiumAtlas\PhysiumAtlas\x64\Debug\PhysiumAtlas.exe
