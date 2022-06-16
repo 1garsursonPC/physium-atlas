@@ -1,6 +1,0 @@
-﻿  Player.cpp
-<<<<<<< HEAD
-C:\Users\Gael\Documents\Projets\PhysiumAtlas\Player.cpp(17,60): warning C4305: 'argument' : troncation de 'double' à 'float'
-C:\Users\Gael\Documents\Projets\PhysiumAtlas\Player.cpp(33,42): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-C:\Users\Gael\Documents\Projets\PhysiumAtlas\Player.cpp(36,42): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-  PhysiumAtlas.vcxproj -> C:\Users\Gael\Documents\Projets\PhysiumAtlas\x64\Debug\PhysiumAtlas.exe

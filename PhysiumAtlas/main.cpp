@@ -1,9 +1,6 @@
 #include <SFML/Graphics.hpp>
-<<<<<<< HEAD
-=======
 #include "TileMap.h"
 #include "DrawableSprite.h"
->>>>>>> 5f198bdd20467db0a644ea0b6155b046ac59fe4e
 #include "Player.h"
 #include <iostream>
 
@@ -50,32 +47,41 @@ int main()
     if (!playerSprite.load("../Sprites/Player.png"))
         return -1;
     playerSprite.new_pos(64, 500);
-
+    sf::Clock clock; // Starts the clock
+    sf::Time elapsedTime = clock.getElapsedTime();
+    
     //On fait tourner la boucle principale
     while (window.isOpen())
     {
-        sf::Clock clock; // Starts the clock
-
+     
+      
         sf::Event event;
+        
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            player.moveRight(elapsedTime.asMicroseconds());
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            player.moveLeft(elapsedTime.asMicroseconds());
+        }
+        else
+        {
+            player.idle(elapsedTime.asMicroseconds());
+        }
+        clock.restart(); // Restart the clock to know when was the last input
+        
+
         while (window.pollEvent(event))
         {
-            sf::Time elapsedTime = clock.getElapsedTime();
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            {
-                player.moveRight(elapsedTime.asSeconds()*1000);
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) 
-            {
-                player.moveLeft(elapsedTime.asSeconds()*1000);
-            }
 
+  
             if (event.type == sf::Event::Closed)
                 window.close();
-  
-            clock.restart(); // Restart the clock to know when was the last input
         }
-
-        player.idle();
+        
+      
+        playerSprite.new_pos(player.getHitbox().getPosition().getX(), player.getHitbox().getPosition().getY());
 
         std::cout << "Position : " << player.getHitbox().getPosition().getX() << std::endl;
         std::cout << "Vitesse : " << player.getSpeed().getX() << std::endl;
@@ -87,6 +93,8 @@ int main()
         window.draw(map);
         window.draw(playerSprite);
         window.display();
+    
+        
     }
 
     return 0;

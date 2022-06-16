@@ -15,7 +15,7 @@ public:
 	void jump();
 	void moveRight(float elapsedtime);
 	void moveLeft(float elapsedtime);
-	void idle();
+	void idle(float elapsedtime);
 
 
 };
