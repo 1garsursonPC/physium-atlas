@@ -4,7 +4,7 @@
 class PhysicEngine
 {
 private:
-	float g = 0.0981;
+	float g = 9.81;
 
 
 public:
