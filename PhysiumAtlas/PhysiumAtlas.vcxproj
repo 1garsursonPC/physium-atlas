@@ -19,6 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DrawableSprite.cpp" />
+    <ClCompile Include="logic\Hitbox.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PhysicEngine.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="DrawableSprite.cpp" />
     <ClCompile Include="main.cpp" />
@@ -28,6 +32,7 @@
     <ClInclude Include="logic\Hitbox.h" />
     <ClInclude Include="logic\MovableItem.h" />
     <ClInclude Include="logic\StaticItem.h" />
+    <ClInclude Include="PhysicEngine.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TileMap.h" />
   </ItemGroup>

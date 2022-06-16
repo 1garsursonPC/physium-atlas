@@ -1,19 +1,13 @@
 #include <SFML/Graphics.hpp>
-<<<<<<< HEAD
-=======
 #include "TileMap.h"
 #include "DrawableSprite.h"
->>>>>>> 5f198bdd20467db0a644ea0b6155b046ac59fe4e
 #include "Player.h"
 #include <iostream>
+#include "PhysicEngine.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-    
-    Player player = Player(0, Coordinates(64,500), Coordinates(22,44), 85);
+    sf::RenderWindow window(sf::VideoMode(1024, 576), "Tilemap");
 
     //Dessin du niveau
     const int level[] =
@@ -38,6 +32,8 @@ int main()
        14, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,15,
     };
 
+    PhysicEngine game;
+
     //Creation de la Tilemap
     TileMap map;
     if (!map.load("../Sprites/Tilemap.png", sf::Vector2u(32, 32), level, 32, 18))
@@ -56,31 +52,38 @@ int main()
     {
         sf::Clock clock; // Starts the clock
 
+        sf::Time elapsedTime = clock.getElapsedTime();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            player.moveRight(elapsedTime.asSeconds() * 1000);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            player.moveLeft(elapsedTime.asSeconds() * 1000);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        {
+            player.jump(elapsedTime.asSeconds() * 1000);
+        }
+        else 
+        {
+            player.idle(elapsedTime.asSeconds() * 1000);
+        }
+
         sf::Event event;
         while (window.pollEvent(event))
         {
-            sf::Time elapsedTime = clock.getElapsedTime();
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            {
-                player.moveRight(elapsedTime.asSeconds()*1000);
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) 
-            {
-                player.moveLeft(elapsedTime.asSeconds()*1000);
-            }
-
             if (event.type == sf::Event::Closed)
                 window.close();
-  
             clock.restart(); // Restart the clock to know when was the last input
         }
+        game.applyWeight(player);
+        playerSprite.new_pos(player.getHitbox().getPosition().getX(), player.getHitbox().getPosition().getY());
 
-        player.idle();
-
-        std::cout << "Position : " << player.getHitbox().getPosition().getX() << std::endl;
-        std::cout << "Vitesse : " << player.getSpeed().getX() << std::endl;
-        std::cout << "Accélération : " << player.getAcceleration().getX() << std::endl;
-        std::cout << std::endl;
+        //std::cout << "Position : " << player.getHitbox().getPosition().getX() << std::endl;
+        //std::cout << "Vitesse : " << player.getSpeed().getX() << std::endl;
+        //std::cout << "Accélération : " << player.getAcceleration().getX() << std::endl;
+        //std::cout << std::endl;
 
         //On dessine le niveau
         window.clear();

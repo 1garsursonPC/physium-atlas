@@ -12,10 +12,10 @@ public:
 	void setName(std::string _name) { name = _name; };
 
 	//Movement
-	void jump();
+	void jump(float elapsedtime);
 	void moveRight(float elapsedtime);
 	void moveLeft(float elapsedtime);
-	void idle();
+	void idle(float elapsedtime);
 
 
 };
