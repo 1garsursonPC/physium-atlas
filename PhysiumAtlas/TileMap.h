@@ -1,11 +1,35 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "logic/Hitbox.h"
+
+#include <cmath>
 
 class TileMap : public sf::Drawable, public sf::Transformable
 {
 public:
+	bool isColliding(Hitbox entity)
+	{
+		// Tout sauf 5
+		// Taille bloc élémentaire 32x32
+		unsigned offset_x = (unsigned)std::floor(entity.getPosition().getX() / 32);
+		unsigned offset_y = (unsigned)std::floor(entity.getPosition().getY() / 32);
+		unsigned size_x = (unsigned)std::ceil(entity.getSize().getX());
+		unsigned size_y = (unsigned)std::ceil(entity.getSize().getX() / 32);
+		for(unsigned i = offset_y; i <= size_y; i++)
+			for (unsigned j = offset_x; j <= size_x; j++)
+			{
+				if (tiles[x + y*width] != 5)
+					return true;
+			}
+
+		return false;
+	}
+
     bool load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height)
     {
+	this->tiles = tiles;
+	this->width = width;
+	this->height = height;
         //Chargement du Tileset
         if (!m_tileset.loadFromFile(tileset))
             return false;
@@ -60,5 +84,9 @@ private:
 
     sf::VertexArray m_vertices;
     sf::Texture m_tileset;
+
+    int* tiles;
+    unsigned tiles_width;
+    unsigned tiles_height;
 };
 
