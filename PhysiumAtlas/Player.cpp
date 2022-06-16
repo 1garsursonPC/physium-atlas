@@ -15,35 +15,35 @@ void Player::jump()
 void Player::moveRight(float elapsedtime)
 {
 	setAcceleration( Coordinates(1.2,getAcceleration().getY() ) );
-	if (getSpeed().getX() <= 30) {
-		setSpeed( Coordinates(getSpeed().getX() + getAcceleration().getX() * 1, getSpeed().getY() ) );
+	if (getSpeed().getX() <= 4) {
+		setSpeed( Coordinates(getSpeed().getX() + getAcceleration().getX() * elapsedtime, getSpeed().getY() ) );
 	}
 	getHitbox().setPosition(Coordinates( (getHitbox().getPosition().getX()) + (getSpeed().getX() * elapsedtime) , getHitbox().getPosition().getY() ));
 
-}
+} 
 
 void Player::moveLeft(float elapsedtime)
 {
-	setAcceleration(Coordinates(-1.2, getAcceleration().getY()));
-	if (getSpeed().getX() >= -30) {
-		setSpeed(Coordinates(getSpeed().getX() + getAcceleration().getX() * 1, getSpeed().getY()));
+	setAcceleration(Coordinates(-1.2, getAcceleration().getY() ) );
+	if (getSpeed().getX() >= -4) {
+		setSpeed(Coordinates(getSpeed().getX() + getAcceleration().getX() * elapsedtime, getSpeed().getY()));
 	}
 	getHitbox().setPosition(Coordinates((getHitbox().getPosition().getX()) + (getSpeed().getX() * elapsedtime), getHitbox().getPosition().getY()));
 }
 
-void Player::idle()
+void Player::idle(float elapsedtime)
 {
 	if (getSpeed().getX() > 0 && getAcceleration().getX() > 0) {
-		setSpeed(Coordinates(getSpeed().getX() - getAcceleration().getX() * 0.05, getSpeed().getY()));
+		setSpeed(Coordinates(getSpeed().getX() - getAcceleration().getX() * elapsedtime/2, getSpeed().getY()));
 	}	
 	else if (getSpeed().getX() < 0 && getAcceleration().getX() < 0) {
-		setSpeed(Coordinates(getSpeed().getX() - getAcceleration().getX() * 0.05, getSpeed().getY()));
+		setSpeed(Coordinates(getSpeed().getX() - getAcceleration().getX() * elapsedtime/2, getSpeed().getY()));
 	}
 	else
 	{
-		setSpeed(Coordinates(0, 0));
-		setAcceleration(Coordinates(0, 0));
+		setSpeed(Coordinates(0,getSpeed().getY()));
+		setAcceleration(Coordinates(0, getAcceleration().getY()));
 	}
-	getHitbox().setPosition(Coordinates((getHitbox().getPosition().getX()) + (getSpeed().getX() * 1), getHitbox().getPosition().getY()));
+	getHitbox().setPosition(Coordinates((getHitbox().getPosition().getX()) + getSpeed().getX() * elapsedtime/2 ,getHitbox().getPosition().getY()));
 
 }
