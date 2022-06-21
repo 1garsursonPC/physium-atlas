@@ -47,28 +47,55 @@ int main()
         return -1;
     playerSprite.new_pos(64, 500);
 
+    int pos_x=0, pos_y=0;
+    std::string Coll = "";
+
+
     //On fait tourner la boucle principale
     while (window.isOpen())
     {
         sf::Clock clock; // Starts the clock
 
         sf::Time elapsedTime = clock.getElapsedTime();
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        
+        int offset_x = (int)std::floor(player.getHitbox().getPosition().getX() / 32);
+        int offset_y = (int)std::floor((player.getHitbox().getPosition().getY() + player.getHitbox().getSize().getY()) / 32);
+        
+        if ((pos_x != offset_x) || (pos_y != offset_y))
+        {
+            Coll = map.isColliding(player.getHitbox());
+            pos_x = offset_x;
+            pos_y = offset_y;
+        }        
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && Coll != "Droite")
         {
             player.moveRight(elapsedTime.asSeconds() * 1000);
+            if (Coll == "Coll")
+                game.applyWeight(player);
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && Coll != "Gauche")
         {
             player.moveLeft(elapsedTime.asSeconds() * 1000);
+            if (Coll == "Coll")
+                game.applyWeight(player);
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && Coll != "Coll")
         {
+            std::cout << "Test" << std::endl;
             player.jump(elapsedTime.asSeconds() * 1000);
         }
-        else 
+        else if (Coll == "Coll")
+        {
+            game.applyWeight(player);
+        }
+        else
         {
             player.idle(elapsedTime.asSeconds() * 1000);
+            player.setSpeed(Coordinates(player.getSpeed().getX(), 0));
+            player.setAcceleration(Coordinates(player.getAcceleration().getX(), 0));
         }
+
+
 
         sf::Event event;
         while (window.pollEvent(event))
@@ -77,13 +104,7 @@ int main()
                 window.close();
             clock.restart(); // Restart the clock to know when was the last input
         }
-        game.applyWeight(player);
         playerSprite.new_pos(player.getHitbox().getPosition().getX(), player.getHitbox().getPosition().getY());
-
-        //std::cout << "Position : " << player.getHitbox().getPosition().getX() << std::endl;
-        //std::cout << "Vitesse : " << player.getSpeed().getX() << std::endl;
-        //std::cout << "Accélération : " << player.getAcceleration().getX() << std::endl;
-        //std::cout << std::endl;
 
         //On dessine le niveau
         window.clear();

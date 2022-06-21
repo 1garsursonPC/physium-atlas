@@ -19,9 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DrawableSprite.cpp" />
-    <ClCompile Include="logic\Hitbox.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="PhysicEngine.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="DrawableSprite.cpp" />

@@ -1,35 +1,50 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "logic/Hitbox.h"
-
+#include <iostream>
 #include <cmath>
 
 class TileMap : public sf::Drawable, public sf::Transformable
 {
 public:
-	bool isColliding(Hitbox entity)
+	std::string isColliding(Hitbox entity)
 	{
 		// Tout sauf 5
 		// Taille bloc élémentaire 32x32
-		unsigned offset_x = (unsigned)std::floor(entity.getPosition().getX() / 32);
-		unsigned offset_y = (unsigned)std::floor(entity.getPosition().getY() / 32);
-		unsigned size_x = (unsigned)std::ceil(entity.getSize().getX());
-		unsigned size_y = (unsigned)std::ceil(entity.getSize().getX() / 32);
-		for(unsigned i = offset_y; i <= size_y; i++)
-			for (unsigned j = offset_x; j <= size_x; j++)
-			{
-				if (tiles[x + y*width] != 5)
-					return true;
-			}
+        int offset_x = (int)std::floor(entity.getPosition().getX() / 32);
+        int offset_y = (int)std::floor((entity.getPosition().getY() + entity.getSize().getY()) / 32);
 
-		return false;
+
+        std::cout << tiles[offset_x + 1 + (32 * (offset_y-1))];
+        if (tiles[offset_x + 1 + (32 * (offset_y-1))] != 5)
+        {
+            return "Droite";
+        }
+        else if (tiles[offset_x - 1 + (32 * (offset_y-1))] != 5)
+        {
+            return "Gauche";
+        }
+        else if (tiles[offset_x + (32 * (offset_y))] == 5)
+        {
+            return "Coll";
+        }
+        return "None";
 	}
+
+    std::string DirCollide(Hitbox entity)
+    {
+        int varX[] = { std::floor(entity.getPosition().getX() / 32), std::ceil(entity.getPosition().getX() / 32), std::round(entity.getPosition().getX() / 32) };
+        int offset_x = (int)std::floor(entity.getPosition().getX() / 32);
+        int offset_y = (int)std::floor((entity.getPosition().getY() + entity.getSize().getY()) / 32);
+
+        return "";
+    }
 
     bool load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height)
     {
 	this->tiles = tiles;
-	this->width = width;
-	this->height = height;
+	this->tiles_width = width;
+	this->tiles_height = height;
         //Chargement du Tileset
         if (!m_tileset.loadFromFile(tileset))
             return false;
@@ -85,7 +100,7 @@ private:
     sf::VertexArray m_vertices;
     sf::Texture m_tileset;
 
-    int* tiles;
+    const int* tiles;
     unsigned tiles_width;
     unsigned tiles_height;
 };
