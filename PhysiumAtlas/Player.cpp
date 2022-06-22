@@ -7,11 +7,16 @@ Player::Player(unsigned short _textureID, Coordinates _position, Coordinates _si
 {
 }
 
-void Player::jump(float elapsedtime)
+void Player::jump(float elapsedtime, bool inverse)
 {
-	setAcceleration(Coordinates(getAcceleration().getX(), -0.5));
+	if (inverse)
+		setAcceleration(Coordinates(getAcceleration().getX(), 0.5));
+	else
+		setAcceleration(Coordinates(getAcceleration().getX(), -0.5));
+
 	if (getSpeed().getY() <= 1.5)
 		setSpeed(Coordinates(getSpeed().getX(), getSpeed().getY() + getAcceleration().getY()));
+
 	getHitbox().setPosition(Coordinates(getHitbox().getPosition().getX(), (getHitbox().getPosition().getY()) + getSpeed().getY()));
 
 }
@@ -29,7 +34,7 @@ void Player::moveLeft(float elapsedtime)
 {
 	setAcceleration(Coordinates(-1.2, getAcceleration().getY()));
 	if (getSpeed().getX() >= -0.3) {
-		setSpeed(Coordinates(getSpeed().getX() + getAcceleration().getX() * elapsedtime, getSpeed().getY() + getAcceleration().getX() * elapsedtime));
+		setSpeed(Coordinates(getSpeed().getX() + getAcceleration().getX() * elapsedtime, getSpeed().getY() + getAcceleration().getY() * elapsedtime));
 	}
 	getHitbox().setPosition(Coordinates((getHitbox().getPosition().getX()) + (getSpeed().getX() * 1), getHitbox().getPosition().getY()));
 }

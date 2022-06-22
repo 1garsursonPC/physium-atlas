@@ -12,7 +12,7 @@ public:
 	void setName(std::string _name) { name = _name; };
 
 	//Movement
-	void jump(float elapsedtime);
+	void jump(float elapsedtime, bool inverse);
 	void moveRight(float elapsedtime);
 	void moveLeft(float elapsedtime);
 	void idle(float elapsedtime);

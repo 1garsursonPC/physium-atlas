@@ -10,7 +10,8 @@ private:
 public:
 	PhysicEngine()
 	{};
-	void setG(float gravity);
+	void setG(float gravity) { g = gravity; }
+	float getG() { return g; }
 	void applyWeight(MovableItem &object);
 
 };

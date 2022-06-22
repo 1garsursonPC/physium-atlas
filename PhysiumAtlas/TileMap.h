@@ -11,33 +11,32 @@ public:
 	{
 		// Tout sauf 5
 		// Taille bloc élémentaire 32x32
-        int offset_x = (int)std::floor(entity.getPosition().getX() / 32);
+        int offset_x = (int)std::round((entity.getPosition().getX()) / 32);
         int offset_y = (int)std::floor((entity.getPosition().getY() + entity.getSize().getY()) / 32);
 
+        std::string temp = "";
 
-        std::cout << tiles[offset_x + 1 + (32 * (offset_y-1))];
-        if (tiles[offset_x + 1 + (32 * (offset_y-1))] != 5)
-        {
-            return "Droite";
-        }
-        else if (tiles[offset_x - 1 + (32 * (offset_y-1))] != 5)
-        {
-            return "Gauche";
-        }
-        else if (tiles[offset_x + (32 * (offset_y))] == 5)
-        {
-            return "Coll";
-        }
-        return "None";
+        if (tiles[offset_x + (32 * (offset_y - 1))] == 9)
+            temp+= "Plafond;";
+        if (tiles[offset_x + (32 * (offset_y))] == 1)
+            temp += "Sol;";
+        if (tiles[offset_x + (32 * (offset_y-1))] != 5 && tiles[offset_x + (32 * (offset_y - 1))] != 9)
+            temp += "Deplacement;";
+        if (tiles[offset_x + (32 * (offset_y))] == 5)
+            temp += "Coll;";
+       
+        return temp;
 	}
 
     std::string DirCollide(Hitbox entity)
     {
         int varX[] = { std::floor(entity.getPosition().getX() / 32), std::ceil(entity.getPosition().getX() / 32), std::round(entity.getPosition().getX() / 32) };
-        int offset_x = (int)std::floor(entity.getPosition().getX() / 32);
-        int offset_y = (int)std::floor((entity.getPosition().getY() + entity.getSize().getY()) / 32);
 
-        return "";
+        if (varX[2] == varX[0])
+            return "Gauche";
+        else if (varX[2] == varX[1])
+            return "Droite";
+        return "None";
     }
 
     bool load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height)

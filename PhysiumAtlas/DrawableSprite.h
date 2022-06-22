@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 class DrawableSprite : public sf::Drawable, public sf::Transformable
 {
@@ -18,13 +19,12 @@ private:
     sf::Sprite *sprite = new sf::Sprite;
     sf::Texture m_sprite;
 
-
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         sprite->setTexture(m_sprite);
+        states.transform *= getTransform();
 
-        // et on dessine enfin le tableau de vertex
-        target.draw(*sprite);
+        target.draw(*sprite, states);
     }
 };
 
