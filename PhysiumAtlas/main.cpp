@@ -55,7 +55,7 @@ int main()
     text.setString("Gravity");
     text.setCharacterSize(24);
     text.setFillColor(sf::Color::White);
-    text.setPosition(90, 60);
+    text.setPosition(85, 60);
 
     //Ajout du Sprite du joueur
     DrawableSprite playerSprite;
