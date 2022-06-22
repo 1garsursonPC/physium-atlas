@@ -1,2 +1,2 @@
 # physium-atlas
-A great video game
+A proof of concept video game about changing gravity
